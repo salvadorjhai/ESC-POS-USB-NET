@@ -14,14 +14,31 @@ namespace ESC_POS_USB_NET.Printer
     public class Printer : IPrinter
     {
         private byte[] _buffer;
-        private readonly string _printerName;
+        private string _printerName;
         private readonly IPrintCommand _command;
-        private readonly string _codepage;
-        public Printer(string printerName, string codepage= "IBM860")
+        private string _codepage;
+
+        public Printer()
+        {
+            _command = new EscPos();
+            _codepage = "IBM860";
+        }
+
+        public Printer(string printerName, string codepage = "IBM860")
         {
             _printerName = string.IsNullOrEmpty(printerName) ? "escpos.prn" : printerName.Trim();
             _command = new EscPos();
             _codepage = codepage;
+        }
+
+        public Printer SetPrinterName(string printerName)
+        {
+            _printerName = string.IsNullOrEmpty(printerName) ? "escpos.prn" : printerName.Trim();
+            return this;
+        }
+        public Printer SetCodePage(string codepage = "IBM860") {
+            _codepage = codepage;
+            return this;
         }
 
         public int ColsNomal
@@ -48,12 +65,29 @@ namespace ESC_POS_USB_NET.Printer
             }
         }
 
+        public byte[] Document()
+        {
+            return _buffer;
+        }
+
+        public void SetDocument(byte[] buffer)
+        {
+            if (buffer == null)
+                throw new ArgumentNullException(nameof(buffer), "Buffer cannot be null");
+            _buffer = buffer;
+        }
+
         public void PrintDocument()
         {
             if (_buffer == null)
                 return;
+
+            if (string.IsNullOrEmpty(_printerName))
+                throw new ArgumentException("Printer not set");
+
             if (!RawPrinterHelper.SendBytesToPrinter(_printerName, _buffer))
                 throw new ArgumentException("Unable to access printer : " + _printerName);
+
         }
 
         public void Append(string value)
@@ -158,7 +192,7 @@ namespace ESC_POS_USB_NET.Printer
             Font("Font Special A", Fonts.SpecialFontA);
             Font("Font Special B", Fonts.SpecialFontB);
             Separator();
-            InitializePrint();
+            //InitializePrint();
             SetLineHeight(24);
             Append("This is first line with line height of 30 dots");
             SetLineHeight(40);
