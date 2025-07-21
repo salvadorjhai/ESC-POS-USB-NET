@@ -179,6 +179,21 @@ namespace ESC_POS_USB_NET.Printer
             Append("Font Width 2");
             DoubleWidth3();
             Append("Font Width 3");
+            // ------------------
+            Small(); Append("Font Small");
+            DoubleHeight(); Append("Font DoubleHeight");
+            DoubleWidth(); Append("Font DoubleWidth");
+            DoubleSize(); Append("Font DoubleSize");
+            Scale2xWidth(); Append("Font Scale2xWidth");
+            Scale2xHeight(); Append("Font Scale2xHeight");
+            Scale2x(); Append("Font Scale2x");
+            Scale(2,2); Append("Scaled (2,2)");
+            Scale(3,1); Append("Scaled (3,1)");
+            Scale(4,3); Append("Scaled (4,3)");
+            Scale(8,8); Append("Scaled (8,8)");
+            // ------------------
+            NormalWidth();
+            Append("Normal width");
             NormalWidth();
             Append("Normal width");
             Separator();
@@ -267,6 +282,16 @@ namespace ESC_POS_USB_NET.Printer
         {
             Append(_command.FontWidth.DoubleWidth3());
         }
+
+        // additional methods
+        public void Small() => Append(_command.FontWidth.Small());
+        public void DoubleHeight() => Append(_command.FontWidth.DoubleHeight());
+        public void DoubleWidth() => Append(_command.FontWidth.DoubleWidth());
+        public void DoubleSize() => Append(_command.FontWidth.DoubleSize());
+        public void Scale2xWidth() => Append(_command.FontWidth.Scale2xWidth());
+        public void Scale2xHeight() => Append(_command.FontWidth.Scale2xHeight());
+        public void Scale2x() => Append(_command.FontWidth.Scale2x());
+        public void Scale(int widthMultiplier, int heightMultiplier) => Append(_command.FontWidth.Scale(widthMultiplier, heightMultiplier));
 
         public void AlignLeft()
         {
