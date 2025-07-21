@@ -5,7 +5,8 @@
 </Authors>
     <ApplicationVersion>1.0.0</ApplicationVersion>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>ESC_POS_USB_NET</RootNamespace>
+	  <LangVersion>latest</LangVersion>
+    <RootNamespace>ESC_POS_USB_NET</RootNamespace>	  
     <ApplicationIcon>Icon.ico</ApplicationIcon>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
