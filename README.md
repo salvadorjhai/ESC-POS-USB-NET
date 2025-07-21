@@ -1,3 +1,38 @@
+# Updates;
+
+### Fix for not supported encoding
+```csharp
+System.Text.EncodingProvider ppp = System.Text.CodePagesEncodingProvider.Instance;
+Encoding.RegisterProvider(ppp);
+
+Printer printer = new Printer();
+....
+```
+### Expose _buffer as method
+```csharp
+byte[] Document()
+void SetDocument(byte[] buffer)
+```
+
+incase you need to pass byte[] over a network printer ;)
+
+### Updated typography test for the additional methods
+```csharp
+Small(); Append("Font Small");
+DoubleHeight(); Append("Font DoubleHeight");
+DoubleWidth(); Append("Font DoubleWidth");
+DoubleSize(); Append("Font DoubleSize");
+Scale2xWidth(); Append("Font Scale2xWidth");
+Scale2xHeight(); Append("Font Scale2xHeight");
+Scale2x(); Append("Font Scale2x");
+Scale(2,2); Append("Scaled (2,2)");
+Scale(3,1); Append("Scaled (3,1)");
+Scale(4,3); Append("Scaled (4,3)");
+Scale(8,8); Append("Scaled (8,8)");
+```
+
+### original readme
+<hr>
 <p align="center">
     <img src="https://raw.githubusercontent.com/mtmsuhail/ESC-POS-USB-NET/master/Icon/Icon.png" width="218px" alt="ESC-POS-USB-NET Logo" />
 </p>
