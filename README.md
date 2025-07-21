@@ -18,11 +18,9 @@ incase you need to pass byte[] over a network printer ;)
 
 ### Updated typography test for the additional methods
 ```csharp
-Small(); Append("Font Small");
 DoubleHeight(); Append("Font DoubleHeight");
 DoubleWidth(); Append("Font DoubleWidth");
 DoubleSize(); Append("Font DoubleSize");
-Scale2xWidth(); Append("Font Scale2xWidth");
 Scale2xHeight(); Append("Font Scale2xHeight");
 Scale2x(); Append("Font Scale2x");
 Scale(2,2); Append("Scaled (2,2)");
