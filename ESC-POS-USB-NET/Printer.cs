@@ -11,6 +11,8 @@ using System.Text;
 
 namespace ESC_POS_USB_NET.Printer
 {
+    // main repo: https://github.com/mtmsuhail/ESC-POS-USB-NET
+    // updated fork: https://github.com/salvadorjhai/ESC-POS-USB-NET
     public class Printer : IPrinter
     {
         private byte[] _buffer;
@@ -21,14 +23,16 @@ namespace ESC_POS_USB_NET.Printer
         public Printer()
         {
             _command = new EscPos();
-            _codepage = "IBM860";
+            _codepage = "Windows-1257";
+            SetCodePage(_codepage);
         }
 
-        public Printer(string printerName, string codepage = "IBM860")
+        public Printer(string printerName, string codepage = "Windows-1257")
         {
             _printerName = string.IsNullOrEmpty(printerName) ? "escpos.prn" : printerName.Trim();
             _command = new EscPos();
             _codepage = codepage;
+            SetCodePage(_codepage);
         }
 
         public Printer SetPrinterName(string printerName)
@@ -36,8 +40,9 @@ namespace ESC_POS_USB_NET.Printer
             _printerName = string.IsNullOrEmpty(printerName) ? "escpos.prn" : printerName.Trim();
             return this;
         }
-        public Printer SetCodePage(string codepage = "IBM860") {
+        public Printer SetCodePage(string codepage = "Windows-1257") {
             _codepage = codepage;
+            PrinterExtensions.DefaultEncoding = Encoding.GetEncoding(_codepage);
             return this;
         }
 

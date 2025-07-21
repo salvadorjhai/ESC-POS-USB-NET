@@ -7,6 +7,8 @@ namespace ESC_POS_USB_NET.Extensions
 {
     internal static class PrinterExtensions
     {
+        public static Encoding DefaultEncoding = Encoding.GetEncoding("Windows-1257");
+
         public static byte ToByte(this char c)
         {
             return (byte)c;
@@ -40,7 +42,7 @@ namespace ESC_POS_USB_NET.Extensions
 
             var list = new List<byte>();
             list.AddRange(bytes);
-            list.AddRange(Encoding.GetEncoding(850).GetBytes(value));
+            list.AddRange(DefaultEncoding.GetBytes(value));
             return list.ToArray();
         }
 
