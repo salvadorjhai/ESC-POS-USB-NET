@@ -22,11 +22,7 @@ namespace ESC_POS_USB_NET.EpsonCommands
 
 
         // additional methods
-
-        public byte[] Small()
-        {
-            return new byte[] { 27, '!'.ToByte(), 0 }; // Normal size
-        }
+        
 
         public byte[] DoubleHeight()
         {
@@ -41,11 +37,6 @@ namespace ESC_POS_USB_NET.EpsonCommands
         public byte[] DoubleSize()
         {
             return new byte[] { 27, '!'.ToByte(), 48 }; // Double height + width
-        }
-
-        public byte[] Scale2xWidth()
-        {
-            return new byte[] { 29, '!'.ToByte(), 16 }; // Correct (2x width, 1x height)
         }
 
         public byte[] Scale2xHeight()
