@@ -9,6 +9,7 @@
     <RootNamespace>ESC_POS_USB_NET_DEMO</RootNamespace>
     <AssemblyName>ESC-POS-USB-NET-DEMO</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <LangVersion>latest</LangVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -115,12 +116,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ESC-POS-USB-NET\ESC-POS-USB-NET.csproj">
-      <Project>{e6c5e561-ede6-4cda-9010-4ac27e19b01f}</Project>
-      <Name>ESC-POS-USB-NET</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Icon.bmp">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -136,6 +131,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ESC-POS-USB-NET\ESC-POS-USB-NET.csproj">
+      <Project>{e6c5e561-ede6-4cda-9010-4ac27e19b01f}</Project>
+      <Name>ESC-POS-USB-NET</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
